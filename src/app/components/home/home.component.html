@@ -1,0 +1,31 @@
+<div class="container">
+
+  <p>{{ testPipe | myJoin }}</p>
+
+  <p>{{ users | myJoin : 'name' }}</p>
+
+  <div class="alert alert-info" *appMyIf="users?.length"></div>
+
+  <div class="alert alert-danger" *appMyLoop="let user of users; let i = index; let c = custom">{{ i }} - {{ user.name }} - {{ c }}</div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td [appBg]="'yellow'" [fontSize]="'24px'" scope="row">{{ i + 1 }}</td>
+      <td [appMyStyle]="{'background-color': 'lightblue'}">{{ user.name | mySlice: 0 : 3 }}</td>
+      <td [appMyClass]="'testClass'">{{ user.age }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p>My Date Pipe Demo: {{ testDate | myDate : 'ru-Ru' : {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}  }}</p>
+  <p>My Sum Pipe Demo ({{ numbers }}): {{ numbers | mySum }}</p>
+
+</div>
